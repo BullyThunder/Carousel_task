@@ -6,7 +6,10 @@ export const useCarousel = defineStore('Carousel', () => {
   const arr_img = ref([]);
   const loading = ref(false);
   const error = ref(null);
+<<<<<<< HEAD
   const link = ref([]);
+=======
+>>>>>>> 8f94359 (version 1.0)
    // загрузка слайдерів
   const fetchUsers = async () => {
     loading.value = true;
@@ -17,6 +20,20 @@ export const useCarousel = defineStore('Carousel', () => {
     } catch (err) {
       error.value = err.message;
       console.error('Error to fetch data', err);
+<<<<<<< HEAD
+=======
+      const preloadedImages = await Promise.all(
+        response.data.map(img => 
+          new Promise(resolve => {
+            const image = new Image();
+            image.src = img.download_url;
+            image.onload = () => resolve(img); // Разрешаем промис, когда изображение загружено
+          })
+        )
+      );
+  
+      arr_img.value = preloadedImages; 
+>>>>>>> 8f94359 (version 1.0)
     } finally {
       loading.value = false;
     }
