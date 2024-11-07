@@ -11,13 +11,17 @@
   row-gap: 30px;
 }
 .carousel__image {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
   width: 100%;
   height: 100%;
+  cursor: pointer;
   -o-object-fit: cover;
      object-fit: cover;
   border: 4px solid rosybrown; /* Рамка вокруг изображений */
   border-radius: 8px; /* Закругленные углы */
+}
+.carouselloaded {
+  opacity: 1;
 }
 .carousel img {
   max-width: 200px;
@@ -42,9 +46,23 @@
 }
 .carousel__content {
   display: flex;
-  transition: transform 0.3s ease;
+  will-change: transform; /* Ожидаем изменения transform */
+  animation: slideIn 0.5s ease-out; /* Добавляем анимацию */
+}
+.carousel__block {
+  display: flex;
+  will-change: transform; /* Ожидаем изменения transform */
+  animation: slideIn 0.5s ease-out; /* Добавляем анимацию */
 }
 
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 .container, .list__container, .carousel__container {
   max-width: 1440px;
   margin: 0px auto;

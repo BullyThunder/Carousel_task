@@ -23,7 +23,6 @@ export const useCarousel = defineStore('Carousel', () => {
   };
   const arr_selected = ref([]);
   const select_url = (url) =>{
-    console.log("URL добавляется:", url);
     arr_selected.value.push(url)
   }
   const current_index = ref(0);
@@ -31,9 +30,6 @@ export const useCarousel = defineStore('Carousel', () => {
 
   const visibleCount = ref(5);
   const visibleSliders = computed(() => {
-    console.log('arr_img:', arr_img.value);
-    console.log('totalSliders:', totalSliders.value);
-  
     if (arr_img.value.length === 0) return [];  
   
     const visibleSlides = [];
@@ -48,11 +44,11 @@ export const useCarousel = defineStore('Carousel', () => {
   });
   // логіка перемикання слайдерів
   const next_slider = () => {
-    current_index.value = (current_index.value + 1) % totalSliders.value;
+    current_index.value = (current_index.value + 1) % arr_img.value.length;
   };
-  
+
   const prev_slider = () => {
-    current_index.value = (current_index.value - 1 + totalSliders.value) % totalSliders.value;
+    current_index.value = (current_index.value - 1 + arr_img.value.length) % arr_img.value.length;
   };
   // Звуження екрану в залежності від кількості слайдерів
   const updateVisibleCount = () => {

@@ -6,6 +6,7 @@
       <div class="carousel_image" 
       :style="carouselStyle">
         <img
+         @load="handleImageLoad"
         @click="() => Carousel.select_url(img.url)"
          class="carousel__image" 
          :src="img.download_url" :alt="'Image ' + img.id" />
@@ -28,14 +29,25 @@
 <script setup>
   import { useCarousel } from '@/store/index.js';
   const Carousel = useCarousel();
-  import { onMounted, onBeforeUnmount,computed } from 'vue';
+  import { onMounted, onBeforeUnmount,computed,ref } from 'vue';
+  //Повільне завантаження зображень для уникання лагів 
+  const imageLoaded = ref(false);
+  const handleImageLoad = () => {
+  imageLoaded.value = true;
+  };
 
+  onMounted(() => {
+  
+  setTimeout(() => {
+    imageLoaded.value = true;
+  }, 500);  
+  });
+    //Загрузка фото, зміна кількості фото в залежності від розширення екрану
   onMounted(() => {
     Carousel.fetchUsers();
     Carousel.updateVisibleCount();
     window.addEventListener('resize', Carousel.updateVisibleCount);
   });
-
   onBeforeUnmount(() => {
     window.removeEventListener('resize', Carousel.updateVisibleCount);
   });
@@ -48,15 +60,6 @@
 </script>
 
 <style scoped lang="scss">
-  .carousel__content {
-  display: flex;
-  transition: transform 0.3s ease;
-}
-  .carousel-item {
-    width: 100%;
-    flex-shrink: 0;
-  }
-  .carousel-nav {
-    /* Стили для стрелочек */
-  }
+@import "@/assets/css/style.css";
+
 </style>
