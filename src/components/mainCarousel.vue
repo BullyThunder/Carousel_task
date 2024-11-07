@@ -6,6 +6,7 @@
       <div class="carousel_image" 
       :style="carouselStyle">
         <img
+        @click="() => Carousel.select_url(img.url)"
          class="carousel__image" 
          :src="img.download_url" :alt="'Image ' + img.id" />
       </div>
@@ -18,7 +19,7 @@
       Previous slider
     </button>
     <button @click="Carousel.next_slider" 
-class="carousel-nav button is-link is-light">
+    class="carousel-nav button is-link is-light">
       Next slider
     </button>
   </div>
@@ -47,18 +48,6 @@ class="carousel-nav button is-link is-light">
 </script>
 
 <style scoped lang="scss">
-  .carousel-nav i {
-    font-size: 24px;
-  }
-  .carousel-wrapper {
-    position: relative;
-    overflow: hidden;
-  }
-  .carousel {
-    display: flex;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-  }
   .carousel__content {
   display: flex;
   transition: transform 0.3s ease;

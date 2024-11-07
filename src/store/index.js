@@ -21,7 +21,11 @@ export const useCarousel = defineStore('Carousel', () => {
       loading.value = false;
     }
   };
-
+  const arr_selected = ref([]);
+  const select_url = (url) =>{
+    console.log("URL добавляется:", url);
+    arr_selected.value.push(url)
+  }
   const current_index = ref(0);
   const totalSliders = computed(() =>  arr_img.value.length);
 
@@ -37,7 +41,6 @@ export const useCarousel = defineStore('Carousel', () => {
     for (let i = 0; i < visibleCount.value; i++) {
       
       const index = (current_index.value + i) % totalSliders.value;  
-      console.log('visibleSlides index:', index); 
       visibleSlides.push(arr_img.value[index]);  
     }
   
@@ -57,12 +60,19 @@ export const useCarousel = defineStore('Carousel', () => {
 
     if (width >= 1200) {
       visibleCount.value = 5;
-    } else if (width >= 768) {
+    } else if (width >= 1002) {
+      visibleCount.value = 4;
+    }
+     else if (width >= 768) {
       visibleCount.value = 3;
-    } else {
+    }
+     else if(width>=480) {
+      visibleCount.value = 2;
+      }
+     else {
       visibleCount.value = 1;
     }
   };
 
-  return { arr_img, fetchUsers, next_slider, prev_slider, updateVisibleCount, visibleSliders, current_index, totalSliders };
+  return { arr_img, fetchUsers, next_slider, prev_slider, updateVisibleCount, visibleSliders, current_index, totalSliders,select_url,arr_selected };
 });
