@@ -1,0 +1,29 @@
+.carousel{
+    display: flex;
+    column-gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 30px;
+    &__container{
+        @extend .container;
+    }
+    &__image img{
+        max-width: 200px;
+        max-height: 200px;
+    }
+    &__padding{
+        padding-top: 30px;
+    }
+    &__content{
+        display: flex;
+        column-gap: 30px;
+    }
+    &__arrow{
+        display: flex;
+        column-gap: 50px;
+    }
+    &_nav{
+        
+    }
+}
