@@ -6,7 +6,6 @@ export const useCarousel = defineStore('Carousel', () => {
   const arr_img = ref([]);
   const loading = ref(false);
   const error = ref(null);
-  const link = ref([]);
    // загрузка слайдерів
   const fetchUsers = async () => {
     loading.value = true;
