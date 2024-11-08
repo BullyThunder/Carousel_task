@@ -43,13 +43,13 @@
     }
     &__content{
     display: flex;
-    will-change: transform;  /* Ожидаем изменения transform */
-    animation: slideIn 0.5s ease-out;  /* Добавляем анимацию */
+    will-change: transform;  
+    animation: slideIn 0.5s ease-out; 
     }
     &__block{
         display: flex;
-        will-change: transform;  /* Ожидаем изменения transform */
-        animation: slideIn 0.5s ease-out;  /* Добавляем анимацию */
+        will-change: transform;  
+        animation: slideIn 0.5s ease-out; 
         }
 }
 @keyframes slideIn {
