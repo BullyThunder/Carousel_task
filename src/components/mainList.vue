@@ -1,7 +1,8 @@
 <template>
-  <ul  class="list">
+  <ul v-if="Carousel.arr_selected.length > 0" class="list">
     <transition-group name="fade" tag="ul" class="list">
-    <li v-for="(url, index) in Carousel.arr_selected" :key="index">
+    <li  v-for="(url, index) in Carousel.arr_selected" 
+    :key="index">
       <a :href="url" target="_blank">{{ url }}</a>
     </li>
     </transition-group>

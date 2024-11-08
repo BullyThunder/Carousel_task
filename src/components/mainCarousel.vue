@@ -7,6 +7,7 @@
       :style="carouselStyle">
         <img
          @load="handleImageLoad"
+         :class="{ selected: Carousel.arr_selected.includes(img.url) }"
         @click="() => Carousel.select_url(img.url)"
          class="carousel__image" 
          :src="img.download_url" :alt="'Image ' + img.id" />
@@ -61,5 +62,10 @@
 
 <style scoped lang="scss">
 @import "@/assets/css/style.css";
-
+.selected {
+  border: 3px solid #3498db; /* Синий цвет рамки для выделенного изображения */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень для выделения */
+  transform: scale(1.05); /* Немного увеличим для выделения */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Плавное изменение */
+}
 </style>

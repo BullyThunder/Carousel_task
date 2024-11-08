@@ -34,7 +34,13 @@ export const useCarousel = defineStore('Carousel', () => {
   };
   const arr_selected = ref([]);
   const select_url = (url) =>{
-    arr_selected.value.push(url)
+    const index_1 = arr_selected.value.indexOf(url);
+    if(index_1 === -1){
+      arr_selected.value.push(url);
+    }
+    else{
+      arr_selected.value.splice(index_1,1);
+    }
   }
   const current_index = ref(0);
   const totalSliders = computed(() =>  arr_img.value.length);
